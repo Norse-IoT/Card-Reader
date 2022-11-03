@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Norse IOT Club Attendance</title>
+        <title>Norse IoT Club Attendance</title>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
             .material-symbols-outlined {
@@ -17,12 +17,13 @@
                 display: flex;
             }
             div button {
-                width: 40%;
+                width: 176%;
                 margin-left: 10px;
                 background-color: #ffc107;
                 cursor: pointer;
-                border-color: #ffc107;
-                border-radius: 5px;
+                padding: 5px;
+                border: 1px solid #ffc107;
+                border-radius: 1px;
                 
             }
             div button:hover {
@@ -30,11 +31,24 @@
                 background-color: #ffca2c;
                 border-color: #ffc720;
             }
+            div button:focus {
+                color: #000;
+                
+                background-color: #ffca2c;
+                border-color: #ffc720;
+            }
             div #swipe {
-                width: 30%;
+                width: 300%;
                 margin-right: 10px;
+                
+                
+            }
+            #swipe:focus {
+                outline: solid 3px #ffca2c4a; 
+                border-color: #ffc107;
             }
             textarea {
+                width: 400px;
                 margin: 10px;
                 font-family: 'Source Sans Pro';
             }
@@ -54,16 +68,21 @@
         </style>
     </head>
     <body>
-        <header>Norse IOT Club - Sign In</header>
+        <header>Norse IoT Club - Sign In</header>
         <div id="div">
-            <input id="swipe" placeholder="Swipe card:" type="text">
+            <input autofocus id="swipe" placeholder="Swipe card:" type="text">
             <button onclick="copyURL()">Copy Attendees</button>
         </div>
-        <textarea id="attendees" cols="30" rows="10"></textarea>
+        <textarea disabled id="attendees" cols="30" rows="10"></textarea>
     </body>
     <script>
         document.onload = function() {
             document.getElementById("swipe").focus()
+        }
+        function clear() {
+            document.getElementById("swipe").value = ""
+            document.getElementById("attendees").value = ""
+            document.getElementById("attendees").scrollTop = document.getElementById("attendees").scrollHeight
         }
         //copy to clipboard function
         function copyURL() {
@@ -72,6 +91,7 @@
         window.onkeydown= function(key){
             if ((key.key == "Enter") && document.getElementById("swipe").value != "") {
                 text = document.getElementById("swipe").value
+                console.log(text)
                 text = text.split("+")[1]
                 text = text.split("?")[0]
                 if (text.search("E") != -1) {

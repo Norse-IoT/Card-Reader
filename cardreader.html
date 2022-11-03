@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Norse IOT Club Attendance</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+            .material-symbols-outlined {
+                font-variation-settings:
+                    'FILL' 100,
+                    'wght' 400,
+                    'GRAD' 0,
+                    'opsz' 48
+            }
+            div {
+                width: 400px;
+                margin: 10px;
+                display: flex;
+            }
+            div button {
+                width: 40%;
+                margin-left: 10px;
+                background-color: #ffc107;
+                cursor: pointer;
+                border-color: #ffc107;
+                border-radius: 5px;
+                
+            }
+            div button:hover {
+                color: #000;
+                background-color: #ffca2c;
+                border-color: #ffc720;
+            }
+            div #swipe {
+                width: 30%;
+                margin-right: 10px;
+            }
+            textarea {
+                margin: 10px;
+                font-family: 'Source Sans Pro';
+            }
+            header {
+                width: 100vmax;
+                padding: 10px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                background-color: #5a5a5a;
+                color: white;
+            }
+            body {
+                margin: 0;
+                font-family: 'Source Sans Pro';
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <header>Norse IOT Club - Sign In</header>
+        <div id="div">
+            <input id="swipe" placeholder="Swipe card:" type="text">
+            <button onclick="copyURL()">Copy Attendees</button>
+        </div>
+        <textarea id="attendees" cols="30" rows="10"></textarea>
+    </body>
+    <script>
+        document.onload = function() {
+            document.getElementById("swipe").focus()
+        }
+        //copy to clipboard function
+        function copyURL() {
+            navigator.clipboard.writeText(document.getElementById("attendees").value)
+        }
+        window.onkeydown= function(key){
+            if ((key.key == "Enter") && document.getElementById("swipe").value != "") {
+                text = document.getElementById("swipe").value
+                text = text.split("+")[1]
+                text = text.split("?")[0]
+                if (text.search("E") != -1) {
+                    alert("Bad swipe, please re-swipe!")
+                }
+                else {
+                    document.getElementById("attendees").value += `${text}\n`
+                    document.getElementById("attendees").scrollTop = document.getElementById("attendees").scrollHeight
+                }
+                document.getElementById("swipe").value = ""
+            }}
+    </script>
+</html>

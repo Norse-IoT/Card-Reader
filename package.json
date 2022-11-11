@@ -1,0 +1,20 @@
+{
+  "name": "card-reader",
+  "version": "1.0.0",
+  "description": "Authenticates and checks in members from All Card swipe input.",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Norse-IoT/Card-Reader.git"
+  },
+  "keywords": [],
+  "author": "Con Godsted, Kevin Muscara",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Norse-IoT/Card-Reader/issues"
+  },
+  "homepage": "https://github.com/Norse-IoT/Card-Reader#readme"
+}

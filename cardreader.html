@@ -65,17 +65,35 @@
                 font-family: 'Source Sans Pro';
                 overflow: hidden;
             }
+            #warning {
+                position: fixed;
+                bottom: 0;
+                right: 0;
+                background-color: #5a5a5a;
+                color: #ffc107;
+                text-align: center;
+                min-height: 100px;
+                align-items: center;
+                justify-content: center;
+                font-size: 50px;
+                border: #ffc107 solid 5px;
+                transition: background-color .1s, border-color .1s;
+                
+            }
         </style>
     </head>
     <body>
         <header>Norse IoT Club - Sign In</header>
+        <div id="warning">
+        </div>
         <div id="div">
             <input autofocus id="swipe" placeholder="Swipe card:" type="text">
-            <button onclick="copyURL()">Copy Attendees</button>
+            <button id="copy-button">Copy Attendees</button>
         </div>
         <textarea disabled id="attendees" cols="30" rows="10"></textarea>
     </body>
     <script>
+        //autofocus textbox
         document.onload = function() {
             document.getElementById("swipe").focus()
         }
@@ -84,20 +102,51 @@
             document.getElementById("attendees").value = ""
             document.getElementById("attendees").scrollTop = document.getElementById("attendees").scrollHeight
         }
-        //copy to clipboard function
-        function copyURL() {
-            navigator.clipboard.writeText(document.getElementById("attendees").value)
+        //copy to clipboard
+        document.getElementById("copy-button").onclick = function() {
+          let text = document.getElementById("attendees").value
+          navigator.clipboard.writeText(text)
         }
-        window.onkeydown= function(key){
-            if ((key.key == "Enter") && document.getElementById("swipe").value != "") {
-                text = document.getElementById("swipe").value
-                console.log(text)
-                text = text.split("+")[1]
-                text = text.split("?")[0]
-                if (text.search("E") != -1) {
-                    alert("Bad swipe, please re-swipe!")
+        right = -20
+        i = 4
+        timeout = 0
+        //hide pop-up
+        setInterval(function(){
+                right = right + i
+                if (right >= 100) {
+                    document.getElementById("warning").innerHTML = ""
+                    document.getElementById("warning").style.borderColor = "transparent"
+                    document.getElementById("warning").style.backgroundColor = "transparent"
                 }
+                }, 100)
+            
+        window.onkeydown= function(key){
+            //autofocus textbox
+            document.getElementById("swipe").focus()
+            if ((key.key == "Enter") && document.getElementById("swipe").value != "") {
+                i = 4
+                right = -20
+                text = document.getElementById("swipe").value
+                // trim everything but student id
+                try {
+                    text = text.split("+")[1]
+                    text = text.split("?")[0]
+                }
+                catch(err) {
+                    console.log(err)
+                    text = "E"
+                }
+                // print bad swipe
+                if (text.search("E") != -1) {
+                    document.getElementById("warning").innerHTML = "Bad Swipe!"
+                    document.getElementById("warning").style.borderColor = "red"
+                    document.getElementById("warning").style.backgroundColor = "#5a5a5a"
+                }
+                //print correct swipe + log user
                 else {
+                    document.getElementById("warning").innerHTML = "Welcome!"
+                    document.getElementById("warning").style.backgroundColor = "#5a5a5a"
+                    document.getElementById("warning").style.borderColor = "#ffc107"
                     document.getElementById("attendees").value += `${text}\n`
                     document.getElementById("attendees").scrollTop = document.getElementById("attendees").scrollHeight
                 }

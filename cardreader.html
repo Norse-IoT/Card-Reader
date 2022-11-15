@@ -137,7 +137,7 @@
                     text = "E"
                 }
                 // print bad swipe
-                if (text.search("E") != -1) {
+                if ((text.search("E") != -1) || (text[0] != 1)) {
                     document.getElementById("warning").innerHTML = "Bad Swipe!"
                     document.getElementById("warning").style.borderColor = "red"
                     document.getElementById("warning").style.backgroundColor = "#5a5a5a"

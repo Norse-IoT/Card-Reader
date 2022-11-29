@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Norse-IoT/Card-Reader/issues"
   },
-  "homepage": "https://github.com/Norse-IoT/Card-Reader#readme"
+  "homepage": "https://github.com/Norse-IoT/Card-Reader#readme",
+  "dependencies": {
+    "qr-scanner": "^1.4.2"
+  }
 }

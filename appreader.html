@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <video id="video"></video>
+        <button onclick="start()">Start</button>
+        <button onclick="stop()">Stop</button>
+        <script>
+            let scanner;
+            let videoElem = document.getElementById("video")
+            import('./lib/qr-scanner.min.js').then((module) => {
+                const QrScanner = module.default;
+                scanner = new QrScanner(
+                videoElem,
+                result => console.log('decoded qr code:', result),
+                { /* your options or returnDetailedScanResult: true if you're not specifying any other options */ 
+                    returnDetailedScanResult: true,
+                    highlightScanRegion: true
+                },
+            );});
+            function start() {
+                scanner.start()
+            }
+            function stop() {
+                scanner.stop()
+            }
+        </script>
+    </body>
+</html>

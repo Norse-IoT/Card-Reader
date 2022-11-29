@@ -136,7 +136,7 @@
                     console.log(err)
                     text = "E"
                 }
-                // print bad swipe
+                // detect and print bad swipe 
                 if ((text.search("E") != -1) || (text[0] != 1)) {
                     document.getElementById("warning").innerHTML = "Bad Swipe!"
                     document.getElementById("warning").style.borderColor = "red"

@@ -13,6 +13,7 @@ body {
     width: 65%;
     margin: 10px;
     display: flex;
+    flex-direction: column;
 }
 
 div button {
@@ -23,8 +24,7 @@ div button {
     padding: 5px;
     border: 1px solid #ffc107;
     border-radius: 1px;
-    height: max-content;
-    
+    height: max-content;   
 }
 div button:hover {
     color: #000;
@@ -33,14 +33,14 @@ div button:hover {
 }
 div button:focus {
     color: #000;
-    
     background-color: #ffca2c;
     border-color: #ffc720;
 }
 #swipe {
-    width: 600%;
     margin-right: 10px;
     height: 5em;
+    border: transparent solid 5px;
+    padding-left: 5px;
     
 }
 #swipe:focus {
@@ -50,21 +50,14 @@ div button:focus {
 #attendees {
     outline: none;
     margin: 0px;
-    height: 100vh;
+    height: 90vh;
     background-color: #474c52;
     border: none;
     width: 35%;
     text-align: center;
     padding-top: 10px;
 }
-header {
-    width: 100vmax;
-    padding: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: #26292c;
-    font-size: 1.5em;
-}
+
 body {
     margin: 0;
     overflow: hidden;
@@ -95,6 +88,16 @@ main {
     display: flex;
 }
 header img {
-    height: 1.5em;
-    padding-right: .5em;
+    height: 1.75em;
+    padding-right: .75em;
+}
+header span {
+    font-size: 1.4em
+}
+header {
+    width: 100vmax;
+    padding: 15px;
+    background-color: #26292c;
+    font-size: 1.5em;
+    display: flex;
 }

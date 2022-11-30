@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 100,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 48
+}
+body {
+    background-color: #687078;
+}
+div {
+    width: 65%;
+    margin: 10px;
+    display: flex;
+}
+div button {
+    width: 176%;
+    margin-left: 10px;
+    background-color: #ffc107;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ffc107;
+    border-radius: 1px;
+    height: max-content;
+    
+}
+div button:hover {
+    color: #000;
+    background-color: #ffca2c;
+    border-color: #ffc720;
+}
+div button:focus {
+    color: #000;
+    
+    background-color: #ffca2c;
+    border-color: #ffc720;
+}
+#swipe {
+    width: 600%;
+    margin-right: 10px;
+    height: 5em;
+    
+}
+#swipe:focus {
+    outline: solid 3px #ffca2c4a; 
+    border-color: #ffc107;
+}
+textarea {
+    margin: 0px;
+    height: 100vh;
+    background-color: #474c52;
+    border: none;
+    width: 35%;
+    text-align: center;
+    padding-top: 10px;
+}
+header {
+    width: 100vmax;
+    padding: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #26292c;
+    color: white;
+    font-size: 1.5em;
+}
+body {
+    margin: 0;
+    overflow: hidden;
+}
+body, textarea {
+    font-family: 'Source Sans Pro';
+    color: white
+}
+#warning {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    background-color: #5a5a5a;
+    color: #ffc107;
+    text-align: center;
+    min-height: 100px;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    border: #ffc107 solid 5px;
+    transition: background-color .1s, border-color .1s;
+    
+}
+main {
+    display: flex;
+}

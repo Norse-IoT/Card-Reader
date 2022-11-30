@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Norse IoT Club Attendance</title>
+        <link rel="stylesheet" href="web.css">
+    </head>
+    <body>
+        <header>Norse IoT Club - Sign In</header>
+        <div id="warning">
+        </div>
+        <main>
+            <div id="div">
+                <input onclick="toClipboard()" autofocus id="swipe" placeholder="Swipe card or enter Student ID: " type="text">
+            </div>
+            <textarea disabled id="attendees" cols="30" rows="10"></textarea>
+        </main>
+        
+    </body>
+    <script>
+        //autofocus textbox
+        document.onload = function() {
+            document.getElementById("swipe").focus()
+        }
+        function clear() {
+            document.getElementById("swipe").value = ""
+            document.getElementById("attendees").value = ""
+            document.getElementById("attendees").scrollTop = document.getElementById("attendees").scrollHeight
+        }
+        //copy to clipboard
+        function toClipboard() {
+          let text = document.getElementById("attendees").value
+          navigator.clipboard.writeText(text)
+        }
+        right = -20
+        i = 4
+        timeout = 0
+        //hide pop-up
+        setInterval(function(){
+                right = right + i
+                if (right >= 100) {
+                    document.getElementById("warning").innerHTML = ""
+                    document.getElementById("warning").style.borderColor = "transparent"
+                    document.getElementById("warning").style.backgroundColor = "transparent"
+                }
+                }, 100)
+            
+        window.onkeydown= function(key){
+            //autofocus textbox
+            document.getElementById("swipe").focus()
+            if ((key.key == "Enter") && document.getElementById("swipe").value != "") {
+                i = 4
+                right = -20
+                text = document.getElementById("swipe").value
+                // trim everything but student id
+                try {
+                    //unless student id is already trimmed
+                    if (text[0] != "1") {
+                        text = text.split("+")[1]
+                        text = text.split("?")[0]
+                    }
+                }
+                catch(err) {
+                    console.log(err)
+                    text = "E"
+                }
+                // detect and print bad swipe 
+                if ((text.search("E") != -1) || (text[0] != 1)) {
+                    document.getElementById("warning").innerHTML = "Bad Swipe!"
+                    document.getElementById("warning").style.borderColor = "red"
+                    document.getElementById("warning").style.backgroundColor = "#5a5a5a"
+                }
+                //print correct swipe + log user
+                else {
+                    document.getElementById("warning").innerHTML = "Welcome!"
+                    document.getElementById("warning").style.backgroundColor = "#5a5a5a"
+                    document.getElementById("warning").style.borderColor = "#ffc107"
+                    document.getElementById("attendees").value += `${text}\n`
+                    document.getElementById("attendees").scrollTop = document.getElementById("attendees").scrollHeight
+                }
+                document.getElementById("swipe").value = ""
+            }}
+    </script>
+</html>

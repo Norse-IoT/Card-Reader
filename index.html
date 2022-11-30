@@ -5,14 +5,16 @@
         <link rel="stylesheet" href="web.css">
     </head>
     <body>
-        <header>Norse IoT Club - Sign In</header>
-        <div id="warning">
-        </div>
+        <header>
+            <img src="icon.png">
+            <span>Norse IoT Club - Sign In</span>
+        </header>
+        <div id="warning" style="border-color: transparent; background-color: transparent;"></div>
         <main>
             <div id="div">
-                <input onclick="toClipboard()" autofocus id="swipe" placeholder="Swipe card or enter Student ID: " type="text">
+                <input autofocus id="swipe" placeholder="Swipe card or enter Student ID: " type="text">
             </div>
-            <textarea disabled id="attendees" cols="30" rows="10"></textarea>
+            <textarea onclick="toClipboard()" contenteditable="false" id="attendees" cols="30" rows="10"></textarea>
         </main>
         
     </body>
@@ -28,8 +30,9 @@
         }
         //copy to clipboard
         function toClipboard() {
-          let text = document.getElementById("attendees").value
-          navigator.clipboard.writeText(text)
+            console.log("copied")
+            let text = document.getElementById("attendees").value
+            navigator.clipboard.writeText(text)
         }
         right = -20
         i = 4

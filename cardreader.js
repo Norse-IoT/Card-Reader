@@ -52,7 +52,10 @@ setInterval(function(){
 //detect key press from card
 window.onkeydown= function(key){
     //autofocus textbox
-    swipe.focus()
+    
+    if (key.key != "c") {
+        swipe.focus()
+    }
     if ((key.key == "Enter") && swipe.value != "") {
         text = swipe.value
         // trim everything but student id
